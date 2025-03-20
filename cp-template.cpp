@@ -2,12 +2,19 @@
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 
+#ifndef ONLINE_JUDGE
+#include "debugging.h"
+#else
+#define debug(x) 0
+#endif
+
 using namespace std;
 using namespace __gnu_pbds;
 
 #define ff first
 #define ss second
 #define ll long long
+#define ld long double
 #define pii pair<int, int>
 #define pll pair<long long, long long>
 #define vi vector<int>
@@ -23,12 +30,15 @@ using namespace __gnu_pbds;
 #define si set<int>
 #define sc set<char>
 #define mll map<long long, long long>
+#define umap unordered_map
+#define uset unordered_set
 #define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
 #define fise(i, s, e) for (long long int i = s; i < e; i++)
 #define fnr(i, n) for (long long int i = 0; i < n; i++)
 #define fora(a) for(auto u:a)
 #define cf(i, s, e) for (long long int i = s; i <= e; i++)
 #define fies(i, e, s) for (long long int i = e; i > s; i--)
+#define len(s) (ll)s.size()
 #define pb push_back
 #define eb emplace_back
 #define fraction(a) cout.unsetf(ios::floatfield); cout.precision(a); cout.setf(ios::fixed,ios::floatfield);
@@ -50,7 +60,7 @@ using namespace __gnu_pbds;
 
 /* PRINTS */
 template <class T> void print_v(vector<T> &v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; }
-template <class T> void print(T str) { cout << str << endl; }
+template <class T> void print(T str) { cout << str << '\n'; }
 template <class T> void prints(T str) { cout << str << " "; }
 void printInt128(__int128 x) { if (x == 0) { cout << "0"; return; } string res = ""; while (x) { res += (char)('0' + (x % 10)); x /= 10; } reverse(res.begin(), res.end()); cout << res; }
 
@@ -69,6 +79,8 @@ ll modexp(ll a,ll b,ll m) { ll res=1; while (b>0) { if (b&1) res=(res*a)%m; a=(a
 void yes() { cout<<"YES\n"; }
 void no() { cout<<"NO\n"; }
 
+mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
+
 /* All Required define Pre-Processors and typedef Constants */
 typedef long int int32;
 typedef unsigned long int uint32;
@@ -76,13 +88,21 @@ typedef long long int int64;
 typedef unsigned long long int  uint64;
 typedef __int128 lll;
 
+void solve() {
+    print("hello");
+}
 
 int main() {
+    auto st = std::chrono::high_resolution_clock::now();
     ios::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    //freopen("input.txt", "r", stdin);
+    //freopen("output.txt", "w", stdout);
+    int t; cin >> t; while(t--)
+    solve();
+
+    cerr << "Time measured: " << (ld)(chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - st)).count() / 1000.0 << " seconds.\n";
 
     return 0;
 }
