@@ -1,0 +1,63 @@
+
+C++ Bit Manipulation Cheat Sheet (C++20 & C++23)
+
+STL Functions
+
+1. byteswap (C++23)
+- Reverses the bytes in the given integer value.
+- Usage: std::byteswap(x);
+
+2. has_single_bit (C++20)
+- Checks if a number is a power of 2.
+- Usage: std::has_single_bit(x);
+
+3. bit_ceil (C++20)
+- Smallest power of 2 ≥ x.
+- Usage: std::bit_ceil(x);
+
+4. bit_floor (C++20)
+- Largest power of 2 ≤ x.
+- Usage: std::bit_floor(x);
+
+5. bit_width (C++20)
+- Number of bits needed to represent x.
+- Usage: std::bit_width(x);
+
+6. rotl (C++20)
+- Bitwise left-rotation.
+- Usage: std::rotl(x, s);
+
+7. rotr (C++20)
+- Bitwise right-rotation.
+- Usage: std::rotr(x, s);
+
+8. countl_zero (C++20)
+- Leading zero bits.
+- Usage: std::countl_zero(x);
+
+9. countl_one (C++20)
+- Leading one bits.
+- Usage: std::countl_one(x);
+
+10. countr_zero (C++20)
+- Trailing zero bits.
+- Usage: std::countr_zero(x);
+
+11. countr_one (C++20)
+- Trailing one bits.
+- Usage: std::countr_one(x);
+
+12. popcount (C++20)
+- Number of set bits (1s).
+- Usage: std::popcount(x);
+
+
+Manipulating Bits
+
+1. x & (x - 1) -> Turn off the Rightmost 1-bit, Unsigned int is power of 2 or is 0.
+
+2. x | (x + 1) -> Turn on the Rightmost 0-bit
+
+3. x & (x + 1) -> Turn off the trailing 1's.
+
+4. x | (1 << k) -> Sets kth bit
