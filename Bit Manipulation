@@ -61,3 +61,5 @@ Manipulating Bits
 3. x & (x + 1) -> Turn off the trailing 1's.
 
 4. x | (1 << k) -> Sets kth bit
+
+5. x & (1 << k) -> Is kth bit on ?
