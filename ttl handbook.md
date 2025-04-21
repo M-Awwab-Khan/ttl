@@ -414,6 +414,7 @@ Awesome, let’s jump into a **Competitive Programming Geometry Deep Dive** 🚀
 
 ### 🔸 1. Distance Between Two Points
 For points `(x1, y1)` and `(x2, y2)`:
+
 $$
 \text{Distance} = \sqrt{(x2 - x1)^2 + (y2 - y1)^2}
 $$
@@ -507,6 +508,7 @@ where
 ### 🔸 8. Distance from a Point to Line
 
 Given line `Ax + By + C = 0` and point `(x0, y0)`:
+
 $$
 \text{Distance} = \frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}
 $$
@@ -514,9 +516,10 @@ $$
 ---
 
 ### 🔸 9. Circle Geometry
-- Circle center at `(h, k)` with radius `r`:  
- $$
-  (x - h)^2 + (y - k)^2 = r^2
+- Circle center at `(h, k)` with radius `r`:
+
+$$
+(x - h)^2 + (y - k)^2 = r^2
 $$
 
 - Check if point lies **inside**, **on**, or **outside** the circle.
@@ -529,6 +532,7 @@ Given vertices `(x0, y0), (x1, y1), ..., (xn-1, yn-1)`:
 $$
 \text{Area} = \frac{1}{2} \left| \sum_{i=0}^{n-1}(x_i y_{i+1} - x_{i+1} y_i) \right|
 $$
+
 where `(xn = x0, yn = y0)` to close the polygon.
 
 ---
