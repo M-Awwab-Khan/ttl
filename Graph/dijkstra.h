@@ -4,6 +4,9 @@
 
 /*
 Works for only Graph with no negative weight edges.
+
+Time Complexity: O(E * log V)
+Space Complexity: O(V)
 */
 template <typename T>
 void Graph<T>::dijkstra(T s)

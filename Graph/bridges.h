@@ -22,7 +22,7 @@ void Graph<T>::DFSForBridge(T u, std::unordered_map<T, int> &disc, std::unordere
                 bridges.insert({u, v});
             }
         }
-        else if (u != parent[v])
+        else if (v != parent[u])
         {
             low[u] = min(low[u], disc[v]);
         }

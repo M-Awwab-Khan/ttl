@@ -1,6 +1,10 @@
 #pragma once
 #include "Graph.h"
 
+/*
+Works only for Directed Acyclic Graphs (DAG).
+*/
+
 template <typename T>
 void Graph<T>::topSortHelper(std::unordered_set<T> &visited, T s, int &i, std::unordered_map<T, int> &res)
 {

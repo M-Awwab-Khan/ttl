@@ -4,10 +4,13 @@
 /*
 Single Source Shortest Path Algorithm.
 Works for every graph even with negative weight edges.
+
+Time Complexity: O(V * E)
+Space Complexity: O(V)
 */
 
 /*
-Algorihtm
+Algorithm
 
 1. Set all distances to infinity except the source vertex which is set to 0.
 2. Iterate through all edges |V| - 1 times.
