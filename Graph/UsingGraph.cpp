@@ -24,8 +24,7 @@ int main() {
     for(int v: vertices) {g.addVertex(v);}
 
     for(int v: vertices) {
-        for(pair<int, int> p: edges[v]) {
-            g.addEdge(v, p.first, p.second);
+        for(pair<int, int> p: edges[v]) {g.addEdge(v, p.first, p.second);
         }
     }
 
