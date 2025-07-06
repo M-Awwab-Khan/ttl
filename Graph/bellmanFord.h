@@ -1,6 +1,23 @@
 #pragma once
 #include "Graph.h"
 
+/*
+Single Source Shortest Path Algorithm.
+Works for every graph even with negative weight edges.
+*/
+
+/*
+Algorihtm
+
+1. Set all distances to infinity except the source vertex which is set to 0.
+2. Iterate through all edges |V| - 1 times.
+2(a) If a node is unreachable (INFINITY), skip it.
+2(b) For each reachable node, relax all its edges.
+3. Iterate through all edges again to check for negative weight cycles.
+3(a) If a node is reachable and its distance can be relaxed, set it to INT_MIN (Cuz it is a negative cycle).
+
+*/
+
 template <typename T>
 void Graph<T>::bellmanFord(T s)
 {

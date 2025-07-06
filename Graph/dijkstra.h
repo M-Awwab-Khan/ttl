@@ -2,6 +2,9 @@
 
 #include "Graph.h"
 
+/*
+Works for only Graph with no negative weight edges.
+*/
 template <typename T>
 void Graph<T>::dijkstra(T s)
 {
