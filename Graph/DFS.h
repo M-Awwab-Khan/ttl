@@ -2,6 +2,12 @@
 
 #include "Graph.h"
 
+/*
+Solved Problems:
+1. https://codeforces.com/problemset/problem/2044/G1
+2. https://atcoder.jp/contests/dp/tasks/dp_g?lang=en
+*/
+
 template <typename T>
 void Graph<T>::DFSHelper(T s, std::unordered_set<T> &visited, bool print)
 {
