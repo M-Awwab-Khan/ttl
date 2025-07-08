@@ -34,6 +34,7 @@ void Graph<T>::bellmanFord(T s)
 
     for (int i = 0; i < vertices - 1; i++)
     {
+        bool anyChange = false;
         for (auto [k, v] : adjList)
         {
             if (dist[k] == INT_MAX)
@@ -47,8 +48,13 @@ void Graph<T>::bellmanFord(T s)
                 {
                     dist[p.first] = newDist;
                     parent[p.first] = k;
+                    anyChange = true;
                 }
             }
+        }
+        if (!anyChange)
+        {
+            break;
         }
     }
 
