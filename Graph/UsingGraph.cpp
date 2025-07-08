@@ -5,21 +5,19 @@ using namespace std;
 
 int main()
 {
-    Graph<int> g(true, false);
+    Graph<int> g(false, false);
 
-    vector<int> vertices = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int> vertices = {1, 2, 3, 4, 5, 6, 7};
 
     unordered_map<int, vector<pair<int, int>>> edges;
-    edges[0] = {{1, 0}, {7, 0}};
-    edges[1] = {{1, 0}, {2, 0}};
-    edges[2] = {{1, 0}, {5, 0}};
-    edges[3] = {{2, 0}, {4, 0}};
-    edges[4] = {{9, 0}};
-    edges[5] = {{6, 0}, {3, 0}, {9, 0}};
-    edges[6] = {{2, 0}};
-    edges[7] = {{0, 0}, {6, 0}, {8, 0}};
-    edges[8] = {{6, 0}};
-    edges[9] = {{4, 0}};
+
+    edges[1] = {{4, 0}, {7, 0}};
+    edges[2] = {{6, 0}, {5, 0}};
+    edges[3] = {{4, 0}, {5, 0}, {7, 0}};
+    edges[4] = {{7, 0}};
+    edges[5] = {{6, 0}};
+    edges[6] = {};
+    edges[7] = {};
 
     for (int v : vertices)
     {
@@ -34,7 +32,15 @@ int main()
         }
     }
 
-    g.getStronglyConnectedComponents(true);
+    std::unordered_map<int, std::vector<std::pair<int, int>>> adjList = g.getStrongOrientation();
+
+    for (auto [u, V] : adjList)
+    {
+        for (auto [v, w] : V)
+        {
+            cout << u << ' ' << v << '\n';
+        }
+    }
 
     return 0;
 }

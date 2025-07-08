@@ -32,6 +32,8 @@ private:
 
     void kosarajuAlgoForSCC(T u, std::unordered_map<T, std::vector<std::pair<T, int>>> &adjList, std::unordered_set<T> &visited, std::vector<T> &output);
 
+    void dfsForStrongOrientation(T u, std::unordered_map<T, int> &disc, std::unordered_map<T, int> &low, std::unordered_map<T, std::vector<std::pair<T, int>>> &newAdjList, std::vector<std::pair<T, T>> &edges, std::unordered_set<int> &visitedEdges, std::unordered_map<T, std::vector<std::pair<T, int>>> &result, int &bridgeCount);
+
     T min(T &a, T &b);
 
 public:
@@ -71,6 +73,8 @@ public:
     std::vector<std::pair<T, T>> getBridges();
 
     std::vector<std::vector<T>> getStronglyConnectedComponents(bool tarjansAlgo = true);
+
+    std::unordered_map<T, std::vector<std::pair<T, int>>> getStrongOrientation();
 };
 
 #include "GraphImplementation.h"
