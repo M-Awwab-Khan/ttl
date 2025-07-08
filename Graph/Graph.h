@@ -28,6 +28,10 @@ private:
 
     void DFSForArticulationPoints(T u, std::unordered_map<T, int> &disc, std::unordered_map<T, T> &parent, std::unordered_map<T, int> &low, std::unordered_set<T> &articulationPoints);
 
+    void tarjansAlgoForSCC(T u, std::unordered_map<T, int> &disc, std::unordered_map<T, int> &low, std::unordered_map<T, bool> &isInStack, std::vector<std::vector<T>> &SCC, int &sccCount);
+
+    void kosarajuAlgoForSCC(T u, std::unordered_map<T, std::vector<std::pair<T, int>>> &adjList, std::unordered_set<T> &visited, std::vector<T> &output);
+
     T min(T &a, T &b);
 
 public:
@@ -65,6 +69,8 @@ public:
     std::unordered_set<T> getArticulationPoints();
 
     std::vector<std::pair<T, T>> getBridges();
+
+    std::vector<std::vector<T>> getStronglyConnectedComponents(bool tarjansAlgo = true);
 };
 
 #include "GraphImplementation.h"
