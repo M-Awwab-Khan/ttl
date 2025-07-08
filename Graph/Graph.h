@@ -77,6 +77,10 @@ public:
     std::unordered_map<T, std::vector<std::pair<T, int>>> getStrongOrientation();
 
     std::vector<T> constructPath(T e, T s, std::unordered_map<T, T> &parent);
+
+    void BFS01(T s);
+
+    void kBFS_DialsAlgo(T s, int maxWeight);
 };
 
 #include "GraphImplementation.h"

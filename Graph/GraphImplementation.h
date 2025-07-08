@@ -83,3 +83,5 @@ void Graph<T>::print()
 #include "stronglyConnectedComponents.h"
 #include "strongOrientation.h"
 #include "constructPath.h"
+#include "0-1BFS.h"
+#include "KBFS_DialsAlgo.h"
