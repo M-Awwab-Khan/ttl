@@ -25,6 +25,7 @@ template <typename T>
 void Graph<T>::bellmanFord(T s)
 {
     std::unordered_map<T, int> dist;
+    std::unordered_map<T, T> parent;
     for (auto [k, v] : adjList)
     {
         dist[k] = INT_MAX;
@@ -45,28 +46,43 @@ void Graph<T>::bellmanFord(T s)
                 if (newDist < dist[p.first])
                 {
                     dist[p.first] = newDist;
+                    parent[p.first] = k;
                 }
             }
         }
     }
 
-    for (int i = 0; i < vertices - 1; i++)
+    bool negCycle = false;
+    T cycleNode;
+    for (auto [k, v] : adjList)
     {
-        for (auto [k, v] : adjList)
+        if (dist[k] == INT_MAX)
         {
-            if (dist[k] == INT_MAX)
+            continue;
+        }
+        for (std::pair<T, int> p : v)
+        {
+            int newDist = dist[k] + p.second;
+
+            if (newDist < dist[p.first])
             {
-                continue;
-            }
-            for (std::pair<T, int> p : v)
-            {
-                int newDist = dist[k] + p.second;
-                if (newDist < dist[p.first])
-                {
-                    dist[p.first] = INT_MIN;
-                }
+                dist[p.first] = INT_MIN;
+                parent[p.first] = k;
+                negCycle = true;
+                cycleNode = p.first;
             }
         }
+    }
+
+    if (negCycle)
+    {
+        std::cout << "Negative Cycle\n";
+        for (T u : constructPath(parent[cycleNode], cycleNode, parent))
+        {
+            std::cout << u << ' ';
+            dist[u] = INT_MIN;
+        }
+        std::cout << '\n';
     }
 
     std::cout << "Shortest Distance\n";

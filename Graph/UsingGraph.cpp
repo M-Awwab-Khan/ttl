@@ -5,34 +5,32 @@ using namespace std;
 
 int main()
 {
-    Graph<int> g(false, true);
+    Graph<char> g(true, true);
 
-    vector<int> vertices = {1, 2, 3, 4, 5, 6, 7, 8};
+    vector<char> vertices = {'A', 'B', 'C', 'S'};
 
-    unordered_map<int, vector<pair<int, int>>> edges;
+    unordered_map<char, vector<pair<char, int>>> edges;
 
-    edges[1] = {{2, 2}, {4, 5}, {3, 4}};
-    edges[2] = {{4, 4}, {7, 3}};
-    edges[3] = {{4, 3}, {5, 7}};
-    edges[4] = {{5, 2}, {6, 3}, {7, 3}};
-    edges[5] = {{6, 4}};
-    edges[6] = {{8, 2}};
-    edges[7] = {{8, 5}};
+    edges['S'] = {{'A', 3}, {'B', 6}};
+    edges['A'] = {{'B', 5}};
+    edges['B'] = {{'C', 2}};
+    edges['C'] = {{'A', -10}};
 
     for (int v : vertices)
     {
         g.addVertex(v);
     }
 
-    for (int v : vertices)
+    for (char v : vertices)
     {
-        for (pair<int, int> p : edges[v])
+        for (pair<char, int> p : edges[v])
         {
             g.addEdge(v, p.first, p.second);
         }
     }
 
-    g.dijkstra(1);
+    g.print();
+    g.bellmanFord('S');
 
     return 0;
 }
