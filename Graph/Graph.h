@@ -55,7 +55,7 @@ public:
 
     void BFS(T s, std::unordered_set<T> &visited);
 
-    void dijkstra(T s);
+    void dijkstra(T s, bool denseGraph = false);
 
     int connectedComponents();
 
@@ -75,6 +75,8 @@ public:
     std::vector<std::vector<T>> getStronglyConnectedComponents(bool tarjansAlgo = true);
 
     std::unordered_map<T, std::vector<std::pair<T, int>>> getStrongOrientation();
+
+    std::vector<T> constructPath(T e, T s, std::unordered_map<T, T> &parent);
 };
 
 #include "GraphImplementation.h"

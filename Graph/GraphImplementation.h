@@ -82,3 +82,4 @@ void Graph<T>::print()
 #include "bridges.h"
 #include "stronglyConnectedComponents.h"
 #include "strongOrientation.h"
+#include "constructPath.h"

@@ -5,19 +5,19 @@ using namespace std;
 
 int main()
 {
-    Graph<int> g(false, false);
+    Graph<int> g(false, true);
 
-    vector<int> vertices = {1, 2, 3, 4, 5, 6, 7};
+    vector<int> vertices = {1, 2, 3, 4, 5, 6, 7, 8};
 
     unordered_map<int, vector<pair<int, int>>> edges;
 
-    edges[1] = {{4, 0}, {7, 0}};
-    edges[2] = {{6, 0}, {5, 0}};
-    edges[3] = {{4, 0}, {5, 0}, {7, 0}};
-    edges[4] = {{7, 0}};
-    edges[5] = {{6, 0}};
-    edges[6] = {};
-    edges[7] = {};
+    edges[1] = {{2, 2}, {4, 5}, {3, 4}};
+    edges[2] = {{4, 4}, {7, 3}};
+    edges[3] = {{4, 3}, {5, 7}};
+    edges[4] = {{5, 2}, {6, 3}, {7, 3}};
+    edges[5] = {{6, 4}};
+    edges[6] = {{8, 2}};
+    edges[7] = {{8, 5}};
 
     for (int v : vertices)
     {
@@ -32,15 +32,7 @@ int main()
         }
     }
 
-    std::unordered_map<int, std::vector<std::pair<int, int>>> adjList = g.getStrongOrientation();
-
-    for (auto [u, V] : adjList)
-    {
-        for (auto [v, w] : V)
-        {
-            cout << u << ' ' << v << '\n';
-        }
-    }
+    g.dijkstra(1);
 
     return 0;
 }
