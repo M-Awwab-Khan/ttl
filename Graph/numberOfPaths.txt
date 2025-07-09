@@ -1,0 +1,34 @@
+1. Number of Paths of Fixed Length K
+G is directed and unweighted, + Adjacency Matrix
+
+Ans is G^k.
+Can be calculated using binary exponentation (O(N^3 LOG K))
+
+
+2. Shortest Paths of Fixed Length
+G is directed and weighted, + Adjacency Matrix
+
+Ans is G^k = G ⊙ G ⊙ G ... K times
+Where: 
+A ⊙ B => (A ⊙ B)[i][j] = min( A[i][p] + B[p][j] )  // Analogous to Multiplication
+
+Can be computed using binary exponentation (O(N^3 LOG K))
+
+
+3. Number of paths of length <= k 
+
+Modify Matrix (G'):
+For each vertex u, Add a vertex u'
+Add 2 Edges:
+u -> u'
+u' -> u'
+
+
+Now compute G'^(k + 1)
+G'^(k + 1)[i][j'] = Number of paths from i to j with length <= k 
+
+For Shortest Paths, Just add weight 0 with thr edges:
+u -> u' (w = 0)
+w' -> u' (w = 0)
+
+

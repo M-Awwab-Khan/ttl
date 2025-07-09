@@ -37,10 +37,11 @@ T Graph<T>::max(T &a, T &b)
 }
 
 template <typename T>
-Graph<T>::Graph(bool d, bool w)
+Graph<T>::Graph(bool d, bool w, T inv)
 {
     directed = d;
     weighted = w;
+    invalidNode = inv;
 }
 
 template <typename T>
@@ -48,6 +49,16 @@ void Graph<T>::addVertex(T v)
 {
     adjList[v] = {};
     vertices++;
+
+    if (weighted)
+    {
+        for (auto [k, a] : adjMat)
+        {
+            // To set unrachable nodes to INF distance
+            adjMat[k][v] = INT_MAX;
+        }
+    }
+    adjMat[v][v] = 0;
 }
 
 template <typename T>
@@ -57,6 +68,24 @@ void Graph<T>::addEdge(T u, T v, int W)
     if (!directed)
     {
         adjList[v].push_back(std::make_pair(u, W));
+    }
+
+    // ADJACENCY MATRIX
+    if (weighted)
+    {
+        adjMat[u][v] = W;
+        if (!directed)
+        {
+            adjMat[v][u] = W;
+        }
+    }
+    else
+    {
+        adjMat[u][v] = 1;
+        if (!directed)
+        {
+            adjMat[v][u] = 1;
+        }
     }
 }
 
@@ -96,3 +125,4 @@ void Graph<T>::print()
 #include "0-1BFS.h"
 #include "KBFS_DialsAlgo.h"
 #include "floydWarshall.h"
+#include "MSTUsingPrimsAlgo.h"

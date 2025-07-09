@@ -17,8 +17,8 @@ private:
     bool directed = false;
     bool weighted = false;
     int vertices = 0;
-
     std::unordered_map<T, std::vector<std::pair<T, int>>> adjList;
+    std::unordered_map<T, std::unordered_map<T, int>> adjMat;
 
     void DFSHelper(T s, std::unordered_set<T> &visited, bool print = true);
 
@@ -39,7 +39,9 @@ private:
     T max(T &a, T &b);
 
 public:
-    Graph(bool d = false, bool w = false);
+    static T invalidNode;
+
+    Graph(bool d = false, bool w = false, T inv = T());
 
     void addVertex(T v);
 
@@ -87,6 +89,8 @@ public:
     void kBFS_DialsAlgo(T s, int maxWeight);
 
     void floydWarshall();
+
+    void MSTUsingPrimsAlgo(bool dense);
 };
 
 #include "GraphImplementation.h"
