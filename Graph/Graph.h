@@ -36,6 +36,8 @@ private:
 
     T min(T &a, T &b);
 
+    T max(T &a, T &b);
+
 public:
     Graph(bool d = false, bool w = false);
 
@@ -78,9 +80,13 @@ public:
 
     std::vector<T> constructPath(T e, T s, std::unordered_map<T, T> &parent);
 
+    std::vector<T> constructPath(T e, T s, std::unordered_map<T, std::unordered_map<T, T>> &parent);
+
     void BFS01(T s);
 
     void kBFS_DialsAlgo(T s, int maxWeight);
+
+    void floydWarshall();
 };
 
 #include "GraphImplementation.h"

@@ -27,6 +27,16 @@ T Graph<T>::min(T &a, T &b)
 }
 
 template <typename T>
+T Graph<T>::max(T &a, T &b)
+{
+    if (a > b)
+    {
+        return a;
+    }
+    return b;
+}
+
+template <typename T>
 Graph<T>::Graph(bool d, bool w)
 {
     directed = d;
@@ -85,3 +95,4 @@ void Graph<T>::print()
 #include "constructPath.h"
 #include "0-1BFS.h"
 #include "KBFS_DialsAlgo.h"
+#include "floydWarshall.h"

@@ -5,20 +5,17 @@ using namespace std;
 
 int main()
 {
-    Graph<int> g(false, true);
+    Graph<int> g(true, true);
 
-    vector<int> vertices = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    vector<int> vertices = {0, 1, 2, 3, 4};
 
     unordered_map<int, vector<pair<int, int>>> edges;
 
-    edges[0] = {{1, 4}, {7, 8}};
-    edges[1] = {{2, 8}, {7, 11}};
-    edges[2] = {{3, 7}, {8, 2}};
-    edges[3] = {{4, 9}, {5, 14}};
-    edges[4] = {{5, 10}};
-    edges[5] = {{6, 2}};
-    edges[6] = {{7, 1}, {8, 6}};
-    edges[7] = {{8, 7}};
+    edges[0] = {{1, 4}, {3, 5}};
+    edges[1] = {{2, 1}, {4, 6}};
+    edges[2] = {{0, 2}, {3, 3}};
+    edges[3] = {{4, 2}, {2, 1}};
+    edges[4] = {{0, 1}, {3, 4}};
 
     for (int v : vertices)
     {
@@ -33,7 +30,7 @@ int main()
         }
     }
 
-    g.kBFS_DialsAlgo(0, 14);
+    g.floydWarshall();
 
     return 0;
 }
