@@ -28,7 +28,7 @@ int main()
         }
     }
 
-    g.MSTPrimsAlgo(false);
+    g.MSTKruskalsAlgo();
 
     return 0;
 }

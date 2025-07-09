@@ -71,6 +71,8 @@ public:
     }
 
     void MSTPrimsAlgo(bool dense);
+
+    void MSTKruskalsAlgo();
 };
 
 #include "GraphImplementation.h"
