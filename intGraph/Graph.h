@@ -73,6 +73,8 @@ public:
     void MSTPrimsAlgo(bool dense);
 
     void MSTKruskalsAlgo();
+
+    void LCA(vector<pair<int, int>> &queries);
 };
 
 #include "GraphImplementation.h"
