@@ -74,7 +74,16 @@ public:
 
     void MSTKruskalsAlgo();
 
-    void LCA(vector<pair<int, int>> &queries);
+    void secondBestMST();
+
+    void LCABinaryLifting(vector<pair<int, int>> &queries);
+    void LCADFS(vector<pair<int, int>> &queries);
+
+    void maxFlowEdmonsKarp(int s, int t);
+
+    void maxFlowRelabel(int s, int t);
+
+    void maxFlowDinic(int s, int t);
 };
 
 #include "GraphImplementation.h"
