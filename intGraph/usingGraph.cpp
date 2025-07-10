@@ -1,18 +1,13 @@
 #include <bits/stdc++.h>
 #include "Graph.h"
 
-using namespace std;
-
-template <>
-int Graph<int>::invalidNode = -1;
-
 int main()
 {
-    Graph<int> g(false, true, -1);
+    Graph g(false, true, 9);
 
     vector<int> vertices = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
-    unordered_map<int, vector<pair<int, int>>> edges;
+    vector<vector<pair<int, int>>> edges(vertices.size());
 
     edges[0] = {{1, 4}, {7, 8}};
     edges[1] = {{2, 8}, {7, 11}};
@@ -23,20 +18,17 @@ int main()
     edges[6] = {{7, 1}, {8, 6}};
     edges[7] = {{8, 7}};
 
-    for (int v : vertices)
-    {
-        g.addVertex(v);
-    }
-
+    int id = 0;
     for (int v : vertices)
     {
         for (pair<int, int> p : edges[v])
         {
-            g.addEdge(v, p.first, p.second);
+            g.addEdge(v, p.first, p.second, id);
+            id++;
         }
     }
 
-    g.MSTUsingPrimsAlgo(true);
+    g.MSTKruskalsAlgo();
 
     return 0;
 }
