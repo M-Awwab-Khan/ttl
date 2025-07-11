@@ -1,0 +1,34 @@
+Not in TRD:
+1. 01 BFS
+2. articulation points
+3. bellman Ford
+4. BFS
+5. Bridges
+6. connected Components
+7. construct Path
+8. DFS
+9. dijkstra
+10. Floyd Warshall
+11. KBFS
+12. MST Kruskal
+13. Best MST using banned Edges
+14. Top sort
+15. LCA DFS
+16. Max Flow (Edmons Karp)
+17. Kuhn's Algorithm (Max Bipartite Matching)
+18. Bipartite Graph Check (BFS)
+
+
+TRD:
+1. MST Prims
+2. SCC (2 Algos)
+3. Strong Orientation
+4. LCA Binary lifting
+5. Max FLow (Dinic, Relabel)
+6. Min Flow Cost
+7. Flow With Demand
+8. Assignment Problem (Flow)
+
+
+Don't know:
+1. 2nd Best MST using LCA

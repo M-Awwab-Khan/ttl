@@ -56,7 +56,7 @@ void Graph::maxFlowDinic(int s, int t)
     ptr.resize(n, 0);
     int pushed;
     int flow = 0;
-    while (bfs(s, t, 0, adjList))
+    while (bfs(s, t, n, adjList))
     {
         fill(ptr.begin(), ptr.begin() + n, 0);
         while (pushed = dinicDfs(s, t, INT_MAX, adjList))

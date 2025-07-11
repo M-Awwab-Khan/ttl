@@ -66,6 +66,7 @@ std::unordered_map<T, std::vector<std::pair<T, int>>> Graph<T>::getStrongOrienta
 
     int edgeId = 0;
     for (auto [u, V] : adjList)
+
     {
         for (auto [v, w] : V)
         {
