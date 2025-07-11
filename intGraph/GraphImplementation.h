@@ -4,4 +4,7 @@
 
 #include "MSTPrimsAlgo.h"
 #include "MSTKruskalAlgo.h"
-#include "LCA.h"
+#include "LCABinaryLifting.h"
+#include "maxFlowEdmonsKarp.h"
+#include "maxFlowRelabel.h"
+#include "maxFlowDinic.h"

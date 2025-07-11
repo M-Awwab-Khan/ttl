@@ -53,7 +53,7 @@ int getLCA(int u, int v)
     return up[u][0];
 }
 
-void Graph::LCA(vector<pair<int, int>> &queries)
+void Graph::LCABinaryLifting(vector<pair<int, int>> &queries)
 {
     timeIn.resize(n);
     timeOut.resize(n);

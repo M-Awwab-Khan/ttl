@@ -62,6 +62,20 @@ void Graph<T>::floydWarshall()
         }
     }
 
+    for (auto [i, a] : adjList)
+    {
+        for (auto [j, b] : adjList)
+        {
+            for (auto [k, c] : adjList)
+            {
+                if (dist[i][t] < POSINF && dist[t][t] < 0 && dist[t][j] < POSINF)
+                {
+                    dist[i][j] = -POSINF; // Formin neg cycle
+                }
+            }
+        }
+    }
+
     std::cout << "Shortest Distance\n";
     for (auto [i, a] : adjList)
     {
