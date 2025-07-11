@@ -43,8 +43,7 @@ def etf_upto(maxn):
     for p in range(2, maxn + 1):
         if phi[p] == p:  # p is a prime
             for k in range(p, maxn + 1, p):
-                phi[k] *= p - 1
-                phi[k] //= p
+                phi[k] -= phi[k] // p
 
     return phi
 

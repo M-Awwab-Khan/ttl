@@ -75,6 +75,11 @@ def chinese_remainder_theorem(remainders, moduli):
     return x
 
 
+inv = [0] * MOD  # Precompute inverses for all numbers up to MOD
+inv[1] = 1  # assume we already defined this array
+for i in range(2, MOD):
+    inv[i] = MOD - MOD / i * inv[MOD % i] % MOD
+
 # === SAMPLE DRIVER ===
 if __name__ == "__main__":
     a, b = 7, 5
