@@ -4,7 +4,9 @@
 #include <cmath>
 #include <iomanip>
 #include <tuple>
+#include <set>
 using namespace std;
+using ld = long double;
 
 // Geometry (2D) - Point, Line, Vector, Polygon - Template Version
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
@@ -126,6 +128,51 @@ vector<Point<T>> convexHull(vector<Point<T>> pts) {
     return hull;
 }
 
+// Convex Hull Diameter (Rotating Calipers, O(n))
+template<class T>
+array<Point<T>, 2> hullDiameter(const vector<Point<T>>& S) {
+    int n = S.size();
+    int j = n < 2 ? 0 : 1;
+    pair<T, array<Point<T>, 2>> res({0, {S[0], S[0]}});
+    
+    for (int i = 0; i < n; ++i) {
+        for (;; j = (j + 1) % n) {
+            res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});
+            if ((S[(j + 1) % n] - S[j]).cross(S[(i + 1) % n] - S[i]) >= 0)
+                break;
+        }
+    }
+    return res.second;
+}
+
+// Closest Pair of Points (O(n log n))
+template<class T>
+pair<Point<T>, Point<T>> closestPair(vector<Point<T>> v) {
+    if (v.size() <= 1) return {Point<T>(), Point<T>()};
+    set<Point<T>> S;
+    sort(v.begin(), v.end(), [](Point<T> a, Point<T> b) { return a.y < b.y; });
+    pair<T, pair<Point<T>, Point<T>>> ret{numeric_limits<T>::max(), {Point<T>(), Point<T>()}};
+    int j = 0;
+    for (Point<T> p : v) {
+        T d_val = 1 + (T)sqrt((double)ret.first);
+        Point<T> d{d_val, 0};
+        while (j < v.size() && v[j].y <= p.y - d.x) {
+            S.erase(v[j]);
+            j++;
+        }
+        auto lo = S.lower_bound(p - d);
+        auto hi = S.upper_bound(p + d);
+        for (; lo != hi; ++lo) {
+            T dist_sq = (*lo - p).dist2();
+            // if (dist_sq > 0) { // Avoid same point
+                ret = min(ret, {dist_sq, {*lo, p}});
+            // }
+        }
+        S.insert(p);
+    }
+    return ret.second;
+}
+
 // Point in polygon (0 = outside, 1 = boundary, 2 = inside)
 template<class T>
 int inPolygon(const vector<Point<T>>& poly, Point<T> p) {
@@ -142,18 +189,18 @@ int inPolygon(const vector<Point<T>>& poly, Point<T> p) {
 }
 
 int main() {
-    cout << fixed << setprecision(6);
-    
-    // Example usage:
-    typedef Point<long long> P;
-    
+   while (true) {
     int n; cin >> n;
-    vector<P> points(n);
+    if (n == 0) break; // Exit condition
+    vector<Point<ld>> polygon(n);
     for (int i = 0; i < n; ++i) {
-        cin >> points[i].x >> points[i].y;
+        cin >> polygon[i].x >> polygon[i].y;
     }
 
-    cout << polyArea(points) * 2 << endl;
-    
+    auto [closest1, closest2] = closestPair(polygon);
+    cout << fixed << setprecision(6);
+    cout << closest1.x << " " << closest1.y << " "
+         << closest2.x << " " << closest2.y << endl;
+   } 
     return 0;
 }

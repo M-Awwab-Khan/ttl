@@ -41,16 +41,15 @@ void solve() {
     for (int mask = 1; mask < N; ++mask) {
         // loop on all nodes
         for (int u = 0; u < n; ++u) {
-            if (!((1 << u) & mask)) continue;  // if u is not visited, tou just skip
+            if (!((1 << u) & mask)) continue;  // if u is not visited in this mask
             if (dp[mask][u] == 0) continue; // no path ends here with this mask
             for (int v : adj[u]) {
-                if (((1 << v) & mask)) continue; // same v is visited tou skip
+                if (((1 << v) & mask)) continue; // same v is visited, so skip
                 int nextMask = mask | (1 << v);
                 dp[nextMask][v] = (dp[nextMask][v] + dp[mask][u]) % MOD;
             }
         }
     }
-
     cout << dp[(1<<n) -1][n-1] << endl;
 }
 int main()
