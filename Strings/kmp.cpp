@@ -2,68 +2,76 @@
 
 using namespace std;
 
-void computeLps(string &pat, vector<int> &lps)
+vector<int> computeLPS(const string &pat)
 {
-    int i = -1;
-    lps[0] = 0;
-    for (int j = 1; j < pat.size(); j++)
+    int n = pat.size();
+    vector<int> lps(n, 0);
+    int j = 0;
+
+    for (int i = 1; i < n; i++)
     {
-        while (i >= 0 && pat[j] != pat[i + 1])
+
+        while (j > 0 && pat[i] != pat[j])
         {
-            i = lps[i] - 1;
+            j = lps[j - 1];
         }
-        if (pat[j] == pat[i + 1])
+
+        if (pat[i] == pat[j])
         {
-            i++;
+            j++;
         }
-        lps[j] = i + 1;
+
+        lps[i] = j;
     }
+
+    for (int i : lps)
+        cout << i << ' ';
+    cout << '\n';
+    return lps;
 }
 
-void KMP(string &txt, string &pat, char wildCard)
+vector<int> kmpWildcardMatch(string &txt, string &pat)
 {
-    vector<int> lps(pat.size()), matches;
-    computeLps(pat, lps);
+    int n = txt.size(), m = pat.size();
+    vector<int> res;
+    if (m == 0)
+        return res;
 
-    int i = 0;
+    vector<int> lps = computeLPS(pat);
     int j = 0;
-    while (i < txt.size())
+
+    for (int i = 0; i < txt.size(); i++)
     {
-        if (j < pat.size() && (pat[j] == wildCard || (pat[j] == txt[i])))
+        while (j > 0 && txt[i] != pat[j])
         {
-            i++;
+            j = lps[j - 1];
+        }
+
+        if (txt[i] == pat[j])
+        {
             j++;
         }
 
         if (j == pat.size())
         {
-            matches.push_back(i - j);
+            res.push_back(i - j + 1);
             j = lps[j - 1];
-        }
-        else if (i < txt.size() && j < pat.size() && (pat[j] != txt[i] && pat[j] != wildCard))
-        {
-            if (j != 0)
-            {
-                j = lps[j - 1];
-            }
-            else
-            {
-                i++;
-            }
         }
     }
 
-    for (int i : matches)
+    for (int i : res)
     {
-        cout << i << ' ' << '\n';
+        cout << i << ' ' << txt.substr(i, pat.size()) << "\n";
     }
+
+    return res;
 }
 
 int main()
 {
-    string txt = "foobarbarbarfoo";
-    string pat = "???bar";
-    char wildCard = '?';
-    KMP(txt, pat, wildCard);
+    // string txt = "foobarfarfarfoofunffffffff";
+    string txt = "fooffffoobarfoo";
+    string pat = "fff";
+    kmpWildcardMatch(txt, pat);
     return 0;
 }

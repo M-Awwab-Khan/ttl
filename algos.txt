@@ -1,22 +1,23 @@
 Not in TRD:
 1. 01 BFS
-2. articulation points
+2. articulation points *
 3. bellman Ford
 4. BFS
-5. Bridges
+5. Bridges *
 6. connected Components
 7. construct Path
 8. DFS
 9. dijkstra
-10. Floyd Warshall
+10. Floyd Warshall *
 11. KBFS
-12. MST Kruskal
-13. Best MST using banned Edges
+12. MST Kruskal *
+13. 2nd Best MST using banned Edges *
 14. Top sort
-15. LCA DFS
-16. Max Flow (Edmons Karp)
-17. Kuhn's Algorithm (Max Bipartite Matching)
+15. LCA DFS *
+16. Max Flow (Edmons Karp) *
+17. Kuhn's Algorithm (Max Bipartite Matching) *
 18. Bipartite Graph Check (BFS)
+19. DSU *
 
 
 TRD:
