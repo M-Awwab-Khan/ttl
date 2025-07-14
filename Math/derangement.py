@@ -1,9 +1,7 @@
 def derangement_dp(n):
     if n < 0:
         return 0
-
     D = [0] * (n + 1)
-
     if n >= 0:
         D[0] = 1
     if n >= 1:
