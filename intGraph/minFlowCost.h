@@ -1,109 +1,102 @@
-// 📌 Minimum-Cost Flow using Successive Shortest Paths
-
 #include <bits/stdc++.h>
 using namespace std;
 
-// 🧱 Edge structure to hold flow network info
+// 🧱 Edge structure
 struct Edge
 {
     int from, to, capacity, cost;
 };
 
-// Implement with Dijkstra for O(N^3)
-
-// 🌐 Graph structure
-vector<vector<int>> adj, cost, capacity;
+// Graph
+vector<vector<int>> adj;
+vector<vector<int>> capacity, cost;
 const int INF = 1e9;
 
-// 🔍 SPFA (Shortest Path Faster Algorithm)
-void shortest_paths(int n, int source, vector<int> &dist, vector<int> &parent)
+// 🔍 Dijkstra with Potentials
+void dijkstra(int N, int s, vector<int> &dist, vector<int> &parent, vector<int> &pot)
 {
-    dist.assign(n, INF);
-    dist[source] = 0;
-    vector<bool> in_queue(n, false);
-    queue<int> q;
-    q.push(source);
-    parent.assign(n, -1);
+    dist.assign(N, INF);
+    parent.assign(N, -1);
+    dist[s] = 0;
 
-    while (!q.empty())
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+    pq.push({0, s});
+
+    while (!pq.empty())
     {
-        int u = q.front();
-        q.pop();
-        in_queue[u] = false;
+        auto [d, u] = pq.top();
+        pq.pop();
+        if (d != dist[u])
+            continue;
+
         for (int v : adj[u])
         {
-            if (capacity[u][v] > 0 && dist[v] > dist[u] + cost[u][v])
+            if (capacity[u][v] > 0)
             {
-                dist[v] = dist[u] + cost[u][v];
-                parent[v] = u;
-                if (!in_queue[v])
+                int weight = cost[u][v] + pot[u] - pot[v]; // Reduced cost
+                if (dist[v] > dist[u] + weight)
                 {
-                    in_queue[v] = true;
-                    q.push(v);
+                    dist[v] = dist[u] + weight;
+                    parent[v] = u;
+                    pq.push({dist[v], v});
                 }
             }
         }
     }
 }
 
-// 🚰 Min-Cost Flow Algorithm
-// Goal: Send exactly K units of flow from s to t, with minimum cost
+// 🚰 Min-Cost Flow using Dijkstra + Potentials
 int min_cost_flow(int N, vector<Edge> edges, int K, int s, int t)
 {
     adj.assign(N, vector<int>());
     cost.assign(N, vector<int>(N, 0));
     capacity.assign(N, vector<int>(N, 0));
 
-    // Build the graph
     for (Edge e : edges)
     {
         adj[e.from].push_back(e.to);
-        adj[e.to].push_back(e.from); // Add reverse edge
+        adj[e.to].push_back(e.from);
         cost[e.from][e.to] = e.cost;
         cost[e.to][e.from] = -e.cost;
         capacity[e.from][e.to] = e.capacity;
     }
 
+    vector<int> dist, parent, pot(N, 0);
     int flow = 0, total_cost = 0;
-    vector<int> dist, parent;
 
     while (flow < K)
     {
-        shortest_paths(N, s, dist, parent);
+        dijkstra(N, s, dist, parent, pot);
 
-        // 🚫 No more paths
         if (dist[t] == INF)
             break;
 
-        // 🛠 Find bottleneck (min capacity along path)
+        // Update potentials
+        for (int i = 0; i < N; i++)
+        {
+            if (dist[i] < INF)
+                pot[i] += dist[i];
+        }
+
+        // Find bottleneck
         int f = K - flow;
         for (int cur = t; cur != s; cur = parent[cur])
         {
             f = min(f, capacity[parent[cur]][cur]);
         }
 
-        // 🚚 Send flow & update capacities
+        // Push flow
         flow += f;
-        total_cost += f * dist[t];
+        total_cost += f * pot[t]; // cost = dist[t] + pot[t] - pot[s] == pot[t]
         for (int cur = t; cur != s; cur = parent[cur])
         {
-            capacity[parent[cur]][cur] -= f;
-            capacity[cur][parent[cur]] += f;
+            int prev = parent[cur];
+            capacity[prev][cur] -= f;
+            capacity[cur][prev] += f;
         }
     }
 
-    // ✅ Check if we reached desired flow
     if (flow < K)
         return -1;
     return total_cost;
 }
-
-/*
-📘 How it works:
-- Build graph with both forward and backward edges
-- Repeatedly find cheapest path from s to t (using cost as weight)
-- Send as much flow as possible through this path
-- Stop when we've sent K units of flow
-
-✅ Result: Minimum total cost to send K flow from s to t
-*/
