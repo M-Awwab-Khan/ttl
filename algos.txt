@@ -1,9 +1,7 @@
 Not in TRD:
 1. 01 BFS
-2. articulation points *
 3. bellman Ford
 4. BFS
-5. Bridges *
 6. connected Components
 7. construct Path
 8. DFS
@@ -17,7 +15,7 @@ Not in TRD:
 16. Max Flow (Edmons Karp) *
 17. Kuhn's Algorithm (Max Bipartite Matching) *
 18. Bipartite Graph Check (BFS)
-19. DSU *
+19. DSU * 
 
 
 TRD:

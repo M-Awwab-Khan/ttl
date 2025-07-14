@@ -66,7 +66,7 @@ void Graph<T>::floydWarshall()
     {
         for (auto [j, b] : adjList)
         {
-            for (auto [k, c] : adjList)
+            for (auto [t, c] : adjList)
             {
                 if (dist[i][t] < POSINF && dist[t][t] < 0 && dist[t][j] < POSINF)
                 {

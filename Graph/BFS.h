@@ -8,17 +8,18 @@ void Graph<T>::BFS(T s)
     std::unordered_set<T> visited;
     std::queue<T> q;
     q.push(s);
+    visited.insert(s);
     while (!q.empty())
     {
         T curr = q.front();
         q.pop();
-        visited.insert(curr);
         std::cout << curr << ' ';
 
         for (std::pair<T, int> p : adjList[curr])
         {
             if (visited.find(p.first) == visited.end())
             {
+                visited.insert(p.first);
                 q.push(p.first);
             }
         }
