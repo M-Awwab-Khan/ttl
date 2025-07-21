@@ -75,58 +75,36 @@ void yes() { cout << "YES\n"; }
 void no() { cout << "NO\n"; }
 void printCase(int i) { cout << "Case " << i << ": "; }
 
-unordered_map<string, unordered_set<int>> prefixMap;
-
-string getSignature(string &s)
-{
-    vi freq(26, 0);
-    for (char c : s)
-    {
-        freq[c - 'a']++;
-    }
-    string sig = "";
-    for (int x : freq)
-    {
-        sig += to_string(x) + '#';
-    }
-    return sig;
-}
-
 void solve()
 {
-    int n;
-    cin >> n;
-    string s;
-    string prefix;
-    f(i, 0, n)
+    ll a, b;
+    cin >> a >> b;
+    if (b > a)
     {
-        cin >> s;
-        prefix = "";
-        for (char c : s)
-        {
-            prefix += c;
-            prefixMap[getSignature(prefix)].insert(i);
-        }
+        swap(a, b);
     }
 
-    int q;
-    cin >> q;
-    while (q--)
+    ll x = ((2 * a) - b) / 3;
+    ll y = a - (2 * x);
+
+    if (x >= 0 && y >= 0 && ((((2 * x) + y) == a && (x + (2 * y)) == b) || (((2 * x) + y) == b && (x + (2 * y)) == a)))
     {
-        cin >> s;
-        int ans = prefixMap[getSignature(s)].size();
-        cout << (ans == 0 ? -1 : ans) << '\n';
+        yes();
+    }
+    else
+    {
+        no();
     }
 }
 
-// Problem Link:
+// Problem Link: https://cses.fi/problemset/task/1754
 
 int main()
 {
     ios::ios_base::sync_with_stdio(0);
     cin.tie(NULL);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
     {
         solve();

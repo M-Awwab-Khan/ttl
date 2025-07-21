@@ -72,87 +72,71 @@ bool prime(ll a)
     return 1;
 }
 void yes() { cout << "YES\n"; }
-void no() { cout << "NO\n"; }
+void no() { cout << "NO SOLUTION\n"; }
 void printCase(int i) { cout << "Case " << i << ": "; }
-
-int n, m;
-vector<vi> adjMat;
-
-bool bfs(vi &parent)
-{
-    fill(all(parent), -1);
-    parent[1] = -2;
-    queue<int> q;
-
-    q.push(1);
-
-    while (!q.empty())
-    {
-        int u = q.front();
-        q.pop();
-
-        f(v, 1, n + 1)
-        {
-            if (adjMat[u][v] && parent[v] == -1)
-            {
-                parent[v] = u;
-                q.push(v);
-
-                if (v == n)
-                {
-                    return true;
-                }
-            }
-        }
-    }
-
-    return false;
-}
 
 void solve()
 {
-    cin >> n >> m;
-    adjMat.resize(n + 1, vi(n + 1, 0));
+    string s;
+    cin >> s;
 
-    int a, b;
-    f(i, 0, m)
+    vi arr(26, 0);
+
+    for (char c : s)
     {
-        cin >> a >> b;
-        adjMat[a][b] = 1;
-        adjMat[b][a] = 0;
+        arr[c - 'A']++;
     }
 
-    vector<vi> res;
-
-    vi parent(n + 1, -1);
-
-    int days = 0;
-    while (bfs(parent))
+    int odd = 0;
+    f(i, 0, 26)
     {
-        days++;
-        vi path;
-        int e = n, s = 1;
-        for (int u = e; u != s; u = parent[u])
+        if (arr[i] & 1)
         {
-            adjMat[parent[u]][u]--;
-            adjMat[u][parent[u]]++;
-            path.pb(u);
+            odd++;
         }
-        path.pb(s);
-        reverse(all(path));
-        res.pb(path);
     }
 
-    cout << res.size() << '\n';
-    for (vi p : res)
+    if (odd > 1)
     {
-        cout << p.size() << '\n';
-        print_v(p);
-        cout << '\n';
+        no();
+        return;
     }
+
+    int i = 0, j = s.size() - 1;
+
+    f(k, 0, 26)
+    {
+        if (arr[k] & 1)
+        {
+            continue;
+        }
+
+        while (arr[k])
+        {
+            s[i] = char('A' + k);
+            s[j] = char('A' + k);
+            i++;
+            j--;
+            arr[k] -= 2;
+        }
+    }
+
+    f(k, 0, 26)
+    {
+        while (arr[k] > 0)
+        {
+            s[i] = char('A' + k);
+            s[j] = s[i];
+            i++;
+            j--;
+            arr[k] -= 2;
+        }
+    }
+
+    cout << s << '\n';
 }
 
-// Problem Link: https://cses.fi/problemset/task/1711
+// Problem Link: https://cses.fi/problemset/task/1755
 
 int main()
 {
