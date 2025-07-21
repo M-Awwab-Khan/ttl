@@ -1,9 +1,18 @@
 # Gray Code
 
-`g(n) = n ^ (n >> 1)`
+```cpp
+int gray(int n) {return n ^ (n >> 1);}
+```
 
 # Inverse Gray Code
 
 ```cpp
-x = 1 + 5;
+int invGray(int g) {
+    int n = 0;
+    while(g) {
+        n ^= g;
+        g >> 1;
+    }
+    return n;
+}
 ```
