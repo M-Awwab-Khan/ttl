@@ -4,6 +4,6 @@
 
 # Inverse Gray Code
 
-```
+```cpp
 x = 1 + 5;
 ```
