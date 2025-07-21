@@ -1,3 +1,0 @@
-Whenever a solved problem is added, Please add its link in the associated topics file.
-
-This will help in sorting problems topic wise.
