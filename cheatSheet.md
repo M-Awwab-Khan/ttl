@@ -1,10 +1,10 @@
 # Gray Code
 
-g(n) = n ^ (n >> 1)
+`g(n) = n ^ (n >> 1)`
 
 # Inverse Gray Code
 
-<pre> ```cpp
+<pre> ```
 int invGray(int g) {
     int n = 0;
     while(g) {
