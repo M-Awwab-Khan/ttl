@@ -11,8 +11,8 @@ struct SubMatrix {
             for (int c = 0; c < C; c++)
                 p[r+1][c+1] = v[r][c] + p[r][c+1] + p[r+1][c] - p[r][c];
 	}
-	T sum(int u, int l, int d, int r) { // Calculate the sum of the submatrix [u, l] to [d, r)
-		return p[d][r] - p[d][l] - p[u][r] + p[u][l];
+	T sum(int sr, int sc, int er, int ec) { // Calculate the sum of the submatrix from [sr, sc] to [er, ec] inclusive
+		return p[er+1][ec+1] - p[er+1][sc] - p[sr][ec+1] + p[sr][sc];
 	}
 };
 
@@ -23,8 +23,8 @@ int main() {
 		{7, 8, 9}
 	};
 	SubMatrix<int> sm(v);
-	cout << sm.sum(0, 0, 2, 2) << endl; // 
-	cout << sm.sum(1, 1, 2, 2) << endl; // 
-	cout << sm.sum(0, 1, 3, 2) << endl; // 
+	cout << sm.sum(0, 0, 1, 1) << endl; // Sum from (0,0) to (1,1): 1+2+4+5 = 12
+	cout << sm.sum(1, 1, 1, 1) << endl; // Sum from (1,1) to (1,1): 5 = 5
+	cout << sm.sum(0, 1, 2, 1) << endl; // Sum from (0,1) to (2,1): 2+5+8 = 15
 	return 0;
 }
