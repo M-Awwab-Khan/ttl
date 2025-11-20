@@ -13,7 +13,8 @@ this algorihtm is better than bellman ford and dijkstra.
 template <typename T>
 void Graph<T>::kBFS_DialsAlgo(T s, int maxWeight)
 {
-    std::vector<std::unordered_set<T>> buckets((vertices - 1) * maxWeight);
+    int maxDist = (vertices - 1) * maxWeight;
+    std::vector<std::unordered_set<T>> buckets(maxDist + 1);
     std::unordered_map<T, int> dist;
     std::unordered_map<T, T> parent;
 
@@ -25,7 +26,7 @@ void Graph<T>::kBFS_DialsAlgo(T s, int maxWeight)
 
     buckets[0].insert(s);
 
-    for (int i = 0; i < maxWeight; i++)
+    for (int i = 0; i <= maxDist; i++)
     {
         // Iterating over all buckets
         // i -> means ith bucket
