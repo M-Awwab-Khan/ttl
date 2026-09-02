@@ -1,0 +1,183 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{lipsum} % for dummy text (you can remove)
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{etoolbox}
+\usepackage[top=0.6in, bottom=0.6in, left=0.4in, right=0.4in]{geometry}
+\usepackage{float}
+\usepackage{multicol}
+\geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+
+
+% ========== CONFIGURATION ==========
+\newcommand{\university}{University Name: NEDUET}
+\newcommand{\teamname}{Team Name: (ttl)^3}
+
+% ========== HEADER / FOOTER ==========
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\university \\ \teamname}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% ========== PAGE BREAK TITLE FORMAT ==========
+\titleformat{\section}
+  {\normalfont\large\bfseries}{\thesection}{1em}{}
+
+% ========== CODE LISTINGS ==========
+% ========== CODE LISTINGS ==========
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=C++,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\footnotesize\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=false,
+  tabsize=1
+}
+
+\setlength{\columnsep}{0.1in}
+\setlength{\columnseprule}{1px}
+
+
+% ========== MAIN DOCUMENT ==========
+\begin{document}
+
+\begin{titlepage}
+\vspace*{\fill}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{pages/ned logo.png}
+    \label{fig:enter-label}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE NED University }\\[0.3cm] % Name of your university/college
+\textsc{\LARGE of Engineering and Technology  }\\[0.3cm]
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+% \HRule \\[0.4cm]
+{ \huge \bfseries Team Reference Document\\ \quad  \\ Team (ttl)$^2$}\\[0.2cm] % Title of your document
+% \HRule \\[0.5cm]
+
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+
+\vspace*{\fill} % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+
+% ========== PAGE LOOP ==========
+% Manually create 25 pages. Add your content into each section.
+% \begin{multicols}{1}
+% STL
+\input{pages/page1.tex}
+
+% %Number Theory
+% \textbf{Number Theory}
+% \input{pages/ModularArithmetic}
+% \input{pages/numberofdivisors}
+% \input{pages/sumofdivisors}
+% \input{pages/matrixDeterminant}
+% \input{pages/linearDiophantine}
+
+% % Graph
+% \textbf{Graph}
+% % \input{pages/MSTPrims.tex}
+% \input{pages/SCC.tex}
+% \input{pages/strongOrientation.tex}
+% \input{pages/LCABinaryLifting.tex}
+% \input{pages/MaxFlowDinic.tex}
+% \input{pages/maxFlowRelabel.tex}
+% \input{pages/minFlowCost.tex}
+% \input{pages/flowWithDemand.tex}
+% \input{pages/edgeDisjointPath}
+% \input{pages/brandes}
+% \input{pages/articulationPoints}
+% \input{pages/bridges}
+
+% % Trees
+% \textbf{Tree}
+% % \input{pages/segmentTree}
+% % \input{pages/FenwickTree}
+% % \input{pages/FenwickTree2d}
+% % \input{pages/rmq}
+% % \input{pages/LazySegmentTree}
+% \input{pages/Submatrix}
+% \input{pages/DSU}
+% \input{pages/orderstatisticstree}
+
+% %Strings
+% \textbf{Strings}
+% \input{pages/rollinghash}
+% \input{pages/kmp}
+% \input{pages/zFunction}
+
+% %Bit Masking
+% \textbf{Bit Masking}
+% \input{pages/bitMasking}
+
+% %Geometry
+% \textbf{Geometry}
+% \input{pages/geometry}
+% % \input{pages/lineSweep}
+
+% %Optimization
+% \textbf{Optimization}
+% \input{pages/ternarysearch}
+% % \end{multicols}
+
+% %dp recurrenc3e relations
+% % \begin{multicols}{2}
+% \textbf{DP}
+% \input{pages/dpAlgos}
+% \input{pages/dpRecurrenceRelations}
+
+% \textbf{FFT}
+% \input{pages/fft}
+
+% \end{multicols}
+\end{document}
