@@ -1,45 +1,56 @@
-#include <bits/stdc++.h>
+
+#include "bits/stdc++.h"
+
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-using namespace std;
 using namespace __gnu_pbds;
 
-#define ordered_set tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
-#define ll long long
-#define vi vector<int>
-#define vll vector<ll>
-#define all(a) a.begin(), a.end()
-#define f(i, s, e) for (ll i = s; i < e; ++i)
-#define fr(i, s, e) for (ll i = s; i > e; --i)
-#define vvi vector<vector<int>>
-#define pb push_back
+using namespace std;
+
 template <class T>
-void print_v(vector<T> &v)
+using ordered_set = tree<T, null_type, std::less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+#define ll long long
+#define vll vector<ll>
+#define vi vector<int>
+#define vvi vector<vi>
+#define vvll vector<vll>
+#define endl '\n'
+#define pb push_back
+
+#define f(i, s, e) for (ll i = (s); i < (e); ++i)
+#define fr(i, s, e) for (ll i = (s); i > (e); --i)
+
+#define all(a) a.begin(), a.end()
+
+int tc = 1;
+void yesno(int x) { cout << (x ? "YES\n" : "NO\n"); }
+void printCase(int x)
 {
-    for (auto x : v)
-        cout << x << ' ';
-    cout << '\n';
+    cout << "Case " << x << ": ";
 }
-#define pii pair<int, int>
-#define pll pair<ll, ll>
-#define fraction(a)               \
-    cout.unsetf(ios::floatfield); \
-    cout.precision(a);            \
-    cout.setf(ios::fixed, ios::floatfield);
-void yes() { cout << "YES\n"; }
-void no() { cout << "NO\n"; }
 
-void solve() {}
+void solve()
+{
+    ll n;
+    cin >> n;
+    int k = n;
+    f(i, 0, n)
+    {
+        cout << k++ << ' ';
+    }
+    cout << endl;
+}
 
-int main()
+signed main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    cout.tie(0);
 
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
-    int t;
+
+    int t = 1;
     cin >> t;
     while (t--)
         solve();
