@@ -7,3 +7,7 @@
 *.fls
 *.fdb*
 *.aux
+TRD
+!TRD/*.pdf
+!TRD/*.tex
+!TRD/*.png
