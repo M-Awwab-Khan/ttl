@@ -1,0 +1,1 @@
+// Just break each item in powers of 2 and treat each division as single item and apply 01 knapsack
