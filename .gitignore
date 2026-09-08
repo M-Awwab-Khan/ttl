@@ -11,3 +11,5 @@ TRD
 !TRD/*.pdf
 !TRD/*.tex
 !TRD/*.png
+main.cpp
+compileCommand.txt
